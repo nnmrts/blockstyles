@@ -236,3 +236,4 @@ $RECYCLE.BIN/
 *.lnk
 
 .parcel-cache
+build/
