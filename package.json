@@ -88,8 +88,8 @@
 		"stylelint-config-standard": "^21.0.0"
 	},
 	"engines": {
-		"node": "^15",
-		"npm": "^7"
+		"node": ">=15",
+		"npm": ">=7"
 	},
 	"dependencies": {
 		"antd": "^4.13.1",
