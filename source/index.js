@@ -1,23 +1,13 @@
-import hello from "./hello.js";
-import world from "./world.js";
+/* eslint import/no-unused-modules: off*/
 
-/**
- * This is a hello world function.
- *
- * @returns {string}
- * "Hello World!".
- * @example
- * console.log(helloWorld()); // logs "Hello World!"
- */
-const helloWorld = () => {
-	const firstWord = hello();
-	const secondWord = world();
+import React from "react";
+import {
+	render
+} from "react-dom";
 
-	const words = [firstWord, secondWord];
+import App from "./app.js";
 
-	const capitalizedWords = words.map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`);
-
-	return `${capitalizedWords.join(" ")}!`;
-};
-
-export default helloWorld;
+render(
+	<App />,
+	document.getElementById("root")
+);

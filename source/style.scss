@@ -1,0 +1,129 @@
+@import '../node_modules/antd/dist/antd.dark.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
+}
+
+header.ant-layout-header,
+footer.ant-layout-footer {
+	display: flex;
+	align-items: center;
+	background-color: #1f1f1f;
+}
+
+header.ant-layout-header {
+	> h1 {
+		margin: 0;
+	}
+}
+
+main.ant-layout-content {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	background-color: #151515;
+}
+
+body {
+	margin: 0px;
+
+	> div#root {
+		> section.ant-layout {
+			height: 100vh;
+
+			> section.ant-layout {
+				> main.ant-layout-content {
+					padding: 100px;
+
+					> div.ant-carousel {
+						display: flex;
+						width: 100%;
+						align-items: center;
+						justify-content: center;
+
+						> div.slick-slider {
+							width: 500px;
+
+							> button.slick-arrow {
+								&.slick-prev {
+									width: 0;
+									height: 0;
+									border-top: 10px solid transparent;
+									border-right: 10px solid white;
+									border-bottom: 10px solid transparent;
+								}
+
+								&.slick-next {
+									width: 0;
+									height: 0;
+									border-top: 10px solid transparent;
+									border-bottom: 10px solid transparent;
+									border-left: 10px solid white;
+								}
+							}
+						}
+					}
+				}
+
+				> aside.ant-layout-sider {
+					> div.ant-layout-sider-children {
+						overflow: auto;
+
+						> section.ant-layout {
+							> main.ant-layout-content {
+								display: flex;
+								flex-direction: column;
+								align-items: start;
+								padding: 25px;
+
+								> div.option {
+									width: 100%;
+
+									> button.ant-btn {
+										padding: 5px;
+
+										> div.swatch {
+											width: 100%;
+											height: 100%;
+											border-radius: 100px;
+										}
+									}
+
+									> div.popover {
+										position: fixed;
+										z-index: 2;
+										right: 316px;
+										margin-top: -200px;
+
+										> div.cover {
+											position: fixed;
+											top: 0;
+											right: 0;
+											bottom: 0;
+											left: 0;
+										}
+									}
+
+									> div.ant-row {
+										display: flex;
+										width: 100%;
+										justify-content: center;
+
+										> div.ant-col {
+											> div.ant-input-number {
+												width: 100%;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
