@@ -6,6 +6,7 @@ import {
 	Layout,
 	Typography
 } from "antd";
+import useDimensions from "react-cool-dimensions";
 
 import blocks from "./blocks.js";
 import styles from "./styles.js";
@@ -22,8 +23,17 @@ const {
 	Sider
 } = Layout;
 
+const withDimensions = (WrappedComponent) => {
+	const returnedComponent = (props) => <WrappedComponent {...props} {...useDimensions({})} />;
+
+	returnedComponent.displayName = `Wrapped${WrappedComponent.displayName}`;
+
+	return returnedComponent;
+};
+
 /**
- *
+ * @param p5
+ * @example
  */
 const App = class extends Component {
 	displayName = "App"
@@ -108,6 +118,19 @@ const App = class extends Component {
 		this.setState({
 			activeSlide: current
 		});
+
+		this.#onCanvasResize();
+	}
+
+	#onCanvasResize(p5) {
+		const {
+			props: {
+				height,
+				width
+			}
+		} = this;
+
+		p5.resizeCanvas(width, height);
 	}
 
 	/**
@@ -124,8 +147,14 @@ const App = class extends Component {
 				activeSlide
 			},
 			setBlockNumber,
-			afterChange
+			afterChange,
+			props: {
+				height,
+				width
+			}
 		} = this;
+
+		const onCanvasResize = this.#onCanvasResize;
 
 		return (
 			<Layout>
@@ -148,12 +177,13 @@ const App = class extends Component {
 									(Style, index) => <div className="style" key={index}>
 										<Style
 											key={index}
-											width={500}
+											width={width}
 											block={blocks[blockNumber]}
-											height={500}
+											height={height}
 											canvasRef={canvasRef}
 											attributesRef={attributesRef}
-											visible={activeSlide === index}
+											hidden={activeSlide !== index}
+											handleResize={onCanvasResize}
 											{...options}
 										/>
 									</div>
@@ -179,4 +209,4 @@ const App = class extends Component {
 	}
 };
 
-export default App;
+export default withDimensions(App);

@@ -74,7 +74,8 @@ const Eth = class extends Component {
 				color3,
 				color4,
 				background,
-				visible
+				hidden,
+				handleResize
 			}
 		} = this;
 
@@ -217,8 +218,28 @@ const Eth = class extends Component {
 			}
 		};
 
-		return <Sketch setup={setup} draw={visible ? draw : () => {}} />;
+		return <Sketch setup={setup} draw={hidden ? () => {} : draw} windowResized={handleResize} />;
 	}
+};
+
+const styleMetadata = {
+	creator_name: "",
+	description: "",
+	image: "",
+	name: "",
+	options: {
+		background: "black",
+		color1: "white",
+		color2: "red",
+		color3: "#00ff00",
+		color4: "blue",
+		mod1: 0.01,
+		mod2: 0.25
+	}
+};
+
+export {
+	styleMetadata
 };
 
 export default Eth;

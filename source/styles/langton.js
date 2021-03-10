@@ -48,7 +48,8 @@ const Langton = class extends Component {
 				attributesRef,
 				width,
 				height,
-				visible
+				hidden,
+				handleResize
 			}
 		} = this;
 
@@ -144,8 +145,20 @@ const Langton = class extends Component {
 			calledDraw += 1;
 		};
 
-		return <Sketch setup={setup} draw={visible ? draw : () => {}} />;
+		return <Sketch setup={setup} draw={hidden ? () => {} : draw} windowResized={handleResize} />;
 	}
+};
+
+const styleMetadata = {
+	creator_name: "",
+	description: "",
+	image: "",
+	name: "",
+	options: {}
+};
+
+export {
+	styleMetadata
 };
 
 export default Langton;
