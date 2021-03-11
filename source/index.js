@@ -8,6 +8,6 @@ import {
 import App from "./app.js";
 
 render(
-	<App />,
+	<App width={500} height={500} />,
 	document.getElementById("root")
 );

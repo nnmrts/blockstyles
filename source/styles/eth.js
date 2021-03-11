@@ -152,6 +152,7 @@ const Eth = class extends Component {
 		// setup() initializes p5 and the canvas element, can be mostly ignored in our case (check draw())
 		const setup = (p5, canvasParentRef) => {
 			// Keep reference of canvas element for snapshots
+
 			p5.createCanvas(width, height).parent(canvasParentRef);
 			canvasRef.current = p5;
 

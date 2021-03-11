@@ -23,14 +23,6 @@ const {
 	Sider
 } = Layout;
 
-const withDimensions = (WrappedComponent) => {
-	const returnedComponent = (props) => <WrappedComponent {...props} {...useDimensions({})} />;
-
-	returnedComponent.displayName = `Wrapped${WrappedComponent.displayName}`;
-
-	return returnedComponent;
-};
-
 /**
  * @param p5
  * @example
@@ -42,15 +34,7 @@ const App = class extends Component {
 		activeSlide: 0,
 		blockNumber: 0,
 		mods: [],
-		options: {
-			background: "black",
-			color1: "white",
-			color2: "red",
-			color3: "#00ff00",
-			color4: "blue",
-			mod1: 0.01,
-			mod2: 0.25
-		}
+		options: styles[0][1].options
 	}
 
 	/**
@@ -116,21 +100,9 @@ const App = class extends Component {
 	 */
 	afterChange(current) {
 		this.setState({
-			activeSlide: current
+			activeSlide: current,
+			options: styles[current][1].options
 		});
-
-		this.#onCanvasResize();
-	}
-
-	#onCanvasResize(p5) {
-		const {
-			props: {
-				height,
-				width
-			}
-		} = this;
-
-		p5.resizeCanvas(width, height);
 	}
 
 	/**
@@ -154,8 +126,6 @@ const App = class extends Component {
 			}
 		} = this;
 
-		const onCanvasResize = this.#onCanvasResize;
-
 		return (
 			<Layout>
 				<Header>
@@ -174,7 +144,7 @@ const App = class extends Component {
 						{
 							styles
 								.map(
-									(Style, index) => <div className="style" key={index}>
+									([Style], index) => <div className="style" key={index}>
 										<Style
 											key={index}
 											width={width}
@@ -183,7 +153,7 @@ const App = class extends Component {
 											canvasRef={canvasRef}
 											attributesRef={attributesRef}
 											hidden={activeSlide !== index}
-											handleResize={onCanvasResize}
+											handleResize={() => {}}
 											{...options}
 										/>
 									</div>
@@ -209,4 +179,4 @@ const App = class extends Component {
 	}
 };
 
-export default withDimensions(App);
+export default App;

@@ -1,4 +1,15 @@
-import Eth from "./styles/eth.js";
-import Langton from "./styles/langton.js";
+import Billiard, {
+	styleMetadata as billiardOptions
+} from "./styles/billiard.js";
+import Eth, {
+	styleMetadata as ethOptions
+} from "./styles/eth.js";
+import Langton, {
+	styleMetadata as langtonOptions
+} from "./styles/langton.js";
 
-export default [Langton, Eth];
+export default [
+	[Billiard, billiardOptions],
+	[Langton, langtonOptions],
+	[Eth, ethOptions]
+];
