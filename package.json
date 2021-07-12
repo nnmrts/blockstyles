@@ -66,7 +66,7 @@
 	"devDependencies": {
 		"@babel/plugin-syntax-bigint": "^7.8.3",
 		"@babel/preset-react": "^7.12.13",
-		"@parcel/transformer-sass": "^2.0.0-nightly.622",
+		"@parcel/transformer-sass": "^2.0.0-nightly.769",
 		"@pumpn/babel-preset": "^3.2.1",
 		"@pumpn/eslint-config": "^10.3.1",
 		"@pumpn/np-config": "^2.3.1",
